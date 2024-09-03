@@ -22,8 +22,9 @@ def data():
 def process(urns):
     urn_key, urn = random.choice(list(urns.items()))
 
-    removed_balls = random.sample(urn, 99)
-    last_ball = urn[99]
+    random.shuffle(urn)
+    removed_balls = urn[:99]
+    last_ball = urn[-1]
 
     # (probability all 99 are red, probability last ball is green)
     return (all(x == 1 for x in removed_balls), last_ball == 0)
@@ -36,6 +37,6 @@ probability = we_saw_last_green / we_saw_99_reds
 
 print(probability)
 # wrong?
-# 0.01968575892462341
+# 0.019456869574441753
 
 # %%
